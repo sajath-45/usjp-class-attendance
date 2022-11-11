@@ -1,0 +1,122 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>My Class</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openCreateClass()">
+        <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-segment
+    mode="md"
+    class="segment"
+    [(ngModel)]="type"
+    scrollable="true"
+    (ionChange)="segmentChanged($event)"
+  >
+    <ion-segment-button value="on-going">
+      <ion-label>{{'On Going'}}</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="completed">
+      <ion-label>{{'Completed'}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <ion-item lines="none">
+    <ion-searchbar
+      mode="ios"
+      [(ngModel)]="searchName"
+      class="ion-no-margin"
+      style="padding-left: 0px; padding-right: 0px"
+    >
+    </ion-searchbar>
+    <ion-item lines="none" color=" ion-no-padding">
+      <ion-icon
+        (click)="onFilterClick()"
+        style="font-size: 37px"
+        color="dark"
+        name="filter"
+        slot="end"
+      ></ion-icon>
+    </ion-item>
+  </ion-item>
+</ion-header>
+
+<ion-content *ngIf="type=='on-going'">
+  <ion-card
+    class="events-card"
+    *ngFor="let event of onGoingClasses|filter:searchName"
+  >
+    <ion-card-header (click)="onEventClick(event)">
+      <ion-label color="primary" class="form-title"
+        >{{event.course.name}}</ion-label
+      >
+      <br />
+      <ion-label color="dark">{{convertIsoDate(event.dateFrom) }} </ion-label>
+      <br />
+      <ion-label color="medium"> {{event.time | date:'shortTime'}} </ion-label>
+    </ion-card-header>
+    <ion-card-content class="ec-footer">
+      <ion-label *ngIf="!classService.isEventOver(event)" color="dark"
+        >{{event.participants.length}} Confirmed
+      </ion-label>
+      <ion-label *ngIf="classService.isEventOver(event)" color="dark"
+        >{{event.participants.length}} Participated
+      </ion-label>
+      <ion-label>
+        <ion-icon
+          *ngIf="!classService.isEventOver(event)"
+          [color]="event.isReminder?'secondary':'primary'"
+          (click)="setReminder(event)"
+          name="notifications-circle"
+        ></ion-icon>
+        <ion-icon
+          *ngIf="!classService.isEventOver(event)"
+          [color]="isParticipant(event)?'secondary':'primary'"
+          (click)="handleParticipant(event)"
+          [name]="isParticipant(event)?'checkmark-circle':'add-circle'"
+        ></ion-icon>
+      </ion-label>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+<ion-content *ngIf="type=='completed'">
+  <ion-card
+    class="events-card"
+    *ngFor="let event of completedClasses|filter:searchName"
+  >
+    <ion-card-header (click)="onEventClick(event)">
+      <ion-label color="primary" class="form-title"
+        >{{event.course.name}}</ion-label
+      >
+      <br />
+      <ion-label color="dark">{{convertIsoDate(event.dateFrom) }} </ion-label>
+      <br />
+      <ion-label color="medium"> {{event.time | date:'shortTime'}} </ion-label>
+    </ion-card-header>
+    <ion-card-content class="ec-footer">
+      <ion-label *ngIf="!classService.isEventOver(event)" color="dark"
+        >{{event.participants.length}} Confirmed
+      </ion-label>
+      <ion-label *ngIf="classService.isEventOver(event)" color="dark"
+        >{{event.participants.length}} Participated
+      </ion-label>
+      <ion-label>
+        <ion-icon
+          *ngIf="!classService.isEventOver(event)"
+          [color]="event.isReminder?'secondary':'primary'"
+          (click)="setReminder(event)"
+          name="notifications-circle"
+        ></ion-icon>
+        <ion-icon
+          *ngIf="!classService.isEventOver(event)"
+          [color]="isParticipant(event)?'secondary':'primary'"
+          (click)="handleParticipant(event)"
+          [name]="isParticipant(event)?'checkmark-circle':'add-circle'"
+        ></ion-icon>
+      </ion-label>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

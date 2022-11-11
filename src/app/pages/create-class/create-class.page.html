@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon
+          slot="icon-only"
+          name="close-circle"
+          style="color: rgb(190, 0, 0)"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Create Class</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-text-center">
+    <qrcode
+      #parent
+      id="parent"
+      (qrCodeURL)="onChangeURL($event)"
+      [qrdata]="this.classForm.value.secretCode"
+      [width]="256"
+      [elementType]="'url'"
+      [errorCorrectionLevel]="'M'"
+      cssClass="coolQRCode"
+    ></qrcode>
+    <a [href]="qrCodeDownloadLink" download="qrcode">Download</a>
+  </div>
+  <form [formGroup]="classForm" (ngSubmit)="submit()">
+    <ion-item>
+      <ion-label position="stacked">Secret Code *</ion-label>
+      <ion-input formControlName="secretCode" type="text" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Select Course</ion-label>
+      <ion-select
+        formControlName="course"
+        placeholder="Select Course"
+        okText="Choose"
+        (ionChange)="onChangeCourse($event)"
+      >
+        <ion-select-option *ngFor="let item of courses" [value]="item"
+          >{{item.code}}{{item.name}}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+    <!-- <ion-item>
+      <ion-label position="stacked">Class Code *</ion-label>
+      <ion-input formControlName="classCode" type="text"></ion-input>
+    </ion-item> -->
+    <!-- <ion-item>
+      <ion-label position="stacked">Class Name *</ion-label>
+      <ion-input
+        placeholder="Mobile Application Development "
+        formControlName="classCode"
+        type="text"
+      ></ion-input>
+    </ion-item> -->
+    <ion-item>
+      <ion-label position="stacked">Date *</ion-label>
+      <ion-input formControlName="date" type="date"></ion-input>
+    </ion-item>
+    <ion-item button detail="false" id="timeID">
+      <ion-label>Start Time *</ion-label>
+      <ion-datetime-button mode="ios" datetime="time"></ion-datetime-button>
+
+      <ion-modal [keepContentsMounted]="true" trigger="timeID">
+        <ng-template>
+          <ion-datetime
+            mode="ios"
+            formControlName="time"
+            [showDefaultButtons]="true"
+            presentation="time"
+            id="time"
+          ></ion-datetime>
+        </ng-template>
+      </ion-modal>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Description </ion-label>
+      <ion-input
+        formControlName="description"
+        type="text"
+        placeholder="i.e AC,Luggage,etc "
+      ></ion-input>
+    </ion-item>
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-button (click)="submit(parent)" expand="block">
+    {{ type!='edit'?'Add':'Save'}}
+  </ion-button>
+</ion-footer>

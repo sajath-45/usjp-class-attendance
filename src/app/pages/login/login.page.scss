@@ -1,0 +1,110 @@
+ion-content {
+  // --background: aliceblue;
+  .loginLogo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 23px;
+    margin-bottom: 12px;
+    height: 150px;
+    width: 150px;
+  }
+
+  ion-list {
+    background: transparent;
+  }
+
+  ion-item {
+    margin-bottom: 10px;
+    color: var(--color-text);
+    .ion-label {
+      color: black;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      margin: 0;
+      background: var(--ion-color-light);
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      opacity: 0.9;
+    }
+    ion-input {
+      border: none;
+      color: var(--ion-color-dark);
+      font-size: 15px;
+      --padding-start: 0;
+      --placeholder-opacity: 0.2;
+      font-weight: 700;
+      height: 25px;
+    }
+    .name {
+      font-size: 13px;
+      opacity: 0.7;
+    }
+  }
+  .message {
+    margin-bottom: 64px;
+  }
+  .forgot_div {
+    padding-left: 14px;
+    padding-right: 20px;
+    margin: 20px 40px 20px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .remember {
+      font-size: 13px;
+      padding: 10px 18px;
+      border-radius: 30px;
+      max-width: 150px;
+      background: var(--color-shade);
+    }
+    .forgot {
+      font-size: 13px;
+      margin-top: 4px;
+    }
+  }
+
+  ion-button {
+    --color: white;
+    margin: 18px 18px 38px 18px;
+    --padding-top: 16px;
+    --padding-bottom: 16px;
+    text-transform: none;
+  }
+  .check {
+    height: 20px;
+    width: 20px;
+    margin-bottom: -4px;
+    margin-right: 6px;
+  }
+}
+
+.errors {
+  font-size: small;
+  color: #fff;
+  background: var(--ion-color-danger);
+  padding-left: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.extramenu {
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+ion-item {
+  --ion-item-background: transparent;
+  --ion-item-border: 0px;
+  border-bottom: 0px;
+}
+
+.createNew {
+  color: var(--color-secondary);
+}

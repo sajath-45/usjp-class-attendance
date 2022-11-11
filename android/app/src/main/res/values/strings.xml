@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">usjp-class-attendance</string>
+    <string name="title_activity_main">usjp-class-attendance</string>
+    <string name="package_name">usjp.classattendance.app</string>
+    <string name="custom_url_scheme">usjp.classattendance.app</string>
+</resources>

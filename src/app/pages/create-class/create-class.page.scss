@@ -1,0 +1,14 @@
+ion-item {
+  padding: 14px !important;
+  ion-label {
+    font-weight: 600;
+    font-size: large;
+  }
+}
+
+.coolQRCode {
+  filter: drop-shadow(3px 3px 3px #999);
+  img {
+    width: 250px;
+  }
+}

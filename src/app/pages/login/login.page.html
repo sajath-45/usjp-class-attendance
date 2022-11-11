@@ -1,0 +1,58 @@
+<ion-content>
+  <img class="loginLogo" src="../../assets/icon/usjp-logo.png" />
+
+  <ion-list>
+    <form [formGroup]="loginForm" style="margin-top: 50px">
+      <ion-item lines="none">
+        <ion-segment value="default">
+          <ion-segment-button value="default">
+            <ion-label>Lecture</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="segment">
+            <ion-label>Student</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-item>
+
+      <ion-item lines="none">
+        <div class="ion-label">
+          <div class="name">{{ "Login email" }}</div>
+          <div class="">
+            <ion-input
+              type="email"
+              formControlName="email"
+              placeholder="{{ 'Login enter your email' }}"
+            ></ion-input>
+          </div>
+        </div>
+      </ion-item>
+      <ion-item lines="none">
+        <div class="ion-label">
+          <div class="name">{{ "Login password" }}</div>
+          <div class="">
+            <ion-input
+              type="password"
+              formControlName="password"
+              placeholder="{{ 'Enter your password' }}"
+            ></ion-input>
+          </div>
+        </div>
+      </ion-item>
+
+      <div class="forgot_div ion-text-center" *ngIf="!showSpinnerButton">
+        <ion-button (click)="login()" [disabled]="loginForm.invalid"
+          >{{ "Login" }}</ion-button
+        >
+
+        <ion-button *ngIf="showSpinnerButton">
+          <ion-spinner></ion-spinner>
+        </ion-button>
+
+        <!-- <div class="remember">
+        <img (click)="change()" class="check" [src]="check" />{{
+        "remember me" }}
+      </div> -->
+      </div>
+    </form>
+  </ion-list>
+</ion-content>

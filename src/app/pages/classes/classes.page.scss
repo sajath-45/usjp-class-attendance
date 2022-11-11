@@ -1,0 +1,44 @@
+ion-segment-button {
+  --background-checked: rgb(231, 227, 227);
+  // --color-checked: var(--ion-color-success-contrast);
+}
+ion-card {
+  box-shadow: none !important;
+}
+
+.dateTime {
+  font-size: 16px !important;
+}
+
+.eventTitle {
+  font-size: x-large !important;
+  margin: 2px 0px;
+  font-weight: 500;
+}
+
+.reminderOn {
+  color: var(--ion-color-primary-shade);
+}
+
+.events-card {
+  margin: 20px 20px 0px 20px;
+  .form-title {
+    font-size: large !important;
+    margin-bottom: 10px;
+  }
+
+  ion-card-header {
+    // padding-top: 5px;
+  }
+
+  .ec-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    ion-icon {
+      font-size: 45px;
+      margin: 0px 5px;
+    }
+  }
+}
