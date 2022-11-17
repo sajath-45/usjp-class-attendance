@@ -59,7 +59,6 @@ export class DatabaseService {
   }
 
   create(path: string, detail, id: string) {
-    ////path= `trips`
     // console.log(path)
     const reference = collection(this.firestore, path);
     let docRef = doc(reference);

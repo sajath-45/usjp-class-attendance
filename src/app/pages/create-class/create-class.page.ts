@@ -16,7 +16,7 @@ import { UtilService } from 'src/app/services/util.service';
 export class CreateClassPage implements OnInit {
   classForm: FormGroup;
   uid = localStorage.getItem('uid');
-  courses;
+  courses = [];
   public qrCodeDownloadLink: SafeUrl = '';
 
   constructor(
@@ -32,14 +32,14 @@ export class CreateClassPage implements OnInit {
   }
 
   ngOnInit() {
-    let vehicleSub = this.dbService.getAll(`course`, 'courseId').subscribe(
+    let closeSub = this.dbService.getAll(`course`, 'courseId').subscribe(
       (res) => {
         this.courses = res;
         console.log('corses', this.courses);
-        vehicleSub.unsubscribe();
+        closeSub.unsubscribe();
       },
       (err) => {
-        vehicleSub.unsubscribe();
+        closeSub.unsubscribe();
         console.log(err);
       }
     );

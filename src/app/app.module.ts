@@ -21,6 +21,7 @@ import { SwiperModule } from 'swiper/angular';
 import { QRCodeModule } from 'angularx-qrcode';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { Ng9PasswordStrengthBarModule } from 'ng9-password-strength-bar';
 
 export function playerFactory() {
   return player;
@@ -44,6 +45,7 @@ export function playerFactory() {
     HttpClientModule,
     QRCodeModule,
     Ng2SearchPipeModule,
+    Ng9PasswordStrengthBarModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

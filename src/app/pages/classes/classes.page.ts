@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import * as moment from 'moment';
-import { Trip } from 'src/app/models/class';
 import { ClassService } from 'src/app/services/class.service';
 import { DatabaseService } from 'src/app/services/database.service';
 import { UtilService } from 'src/app/services/util.service';

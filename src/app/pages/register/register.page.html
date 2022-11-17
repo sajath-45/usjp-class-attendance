@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form
+    [formGroup]="registerForm"
+    (ngSubmit)="register()"
+    class="page-form page-form--no-bg"
+  >
+    <ion-item>
+      <ion-label>{{ "I AM" }}</ion-label>
+      <ion-segment formControlName="type" mode="md">
+        <ion-segment-button
+          value="student"
+          style="padding-top: 5px; padding-bottom: 5px"
+        >
+          <ion-label> {{ "Student" }}</ion-label>
+        </ion-segment-button>
+        <ion-segment-button
+          value="lecturer"
+          style="padding-top: 5px; padding-bottom: 5px"
+        >
+          <ion-label>{{ "Lecturer" }}</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-item>
+
+    <ion-item counter="true" fill="solid" mode="md">
+      <ion-label position="floating">{{ "Your First Name" }}</ion-label>
+      <ion-input
+        type="name"
+        formControlName="firstName"
+        maxlength="10"
+        pattern="[a-zA-Z\s]+"
+        autocomplete="name"
+        inputmode="name
+      "
+      ></ion-input>
+      <ion-note slot="error">Invalid first name</ion-note>
+    </ion-item>
+    <ion-item counter="true" fill="solid" mode="md">
+      <ion-label position="floating">{{ "Your Last Name" }}</ion-label>
+      <ion-input
+        type="name"
+        formControlName="lastName"
+        pattern="^[a-zA-Z]+$"
+        autocomplete="family-name"
+        required
+        maxlength="10"
+      ></ion-input>
+      <ion-note slot="error">Invalid last name</ion-note>
+    </ion-item>
+
+    <ion-item fill="solid" mode="md">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+      <ion-note slot="helper">Enter a valid email</ion-note>
+      <ion-note slot="error">Invalid email</ion-note>
+    </ion-item>
+    <ion-item fill="solid" mode="md">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input
+        minlength="6"
+        type="password"
+        formControlName="password"
+      ></ion-input>
+      <ion-note slot="helper">Enter a valid password</ion-note>
+      <ion-note slot="error">Invalid password</ion-note>
+    </ion-item>
+
+    <ion-item fill="solid" mode="md">
+      <ion-label position="floating">Index No/Staff Id</ion-label>
+      <ion-input type="text" formControlName="id" maxlength="10"></ion-input>
+      <ion-note slot="helper">Enter a your index number / staff id</ion-note>
+      <ion-note slot="error">Invalid Index</ion-note>
+    </ion-item>
+
+    <ion-item fill="solid" mode="md">
+      <ion-label position="floating">Courses</ion-label>
+      <ion-select
+        placeholder="Select Courses"
+        [multiple]="true"
+        (ionChange)="handleChange($event)"
+      >
+        <ion-select-option *ngFor="let item of courses" [value]="item.courseId"
+          >{{item.code+'-'+item.name}}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+
+    <ion-row class="ion-margin">
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block"
+          >Sign Up</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
