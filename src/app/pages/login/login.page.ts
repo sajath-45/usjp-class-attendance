@@ -32,6 +32,7 @@ export class LoginPage implements OnInit {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
+      type: ['students', [Validators.required]],
     });
   }
 
@@ -53,15 +54,24 @@ export class LoginPage implements OnInit {
         if (res.user) {
           localStorage.setItem('uid', res.user.uid);
           let userSub = this.dbService
-            .getOne(`users/${res.user.uid}`)
+            .getOne(`${this.loginForm.value.type}/${res.user.uid}`)
             .subscribe(
               (user: User) => {
                 console.log(user);
+                if (user) {
+                  this.userService.user = user;
+                  this.notificationService.initPush();
 
-                this.userService.user = user;
-                this.notificationService.initPush();
+                  this.router.navigate(['tabs/home']);
+                } else {
+                  this.util.showToast(
+                    `This account is not a valid ${this.loginForm.value.type} account`,
+                    'danger',
+                    'bottom'
+                  );
+                  this.auth.userSignOut().then((res) => {});
+                }
 
-                this.router.navigate(['tabs/home']);
                 userSub.unsubscribe();
               },
               (err) => {

@@ -45,4 +45,13 @@ export class AuthService {
       return e;
     }
   }
+
+  public userSignOut() {
+    console.log('sign out called');
+    return this.auth.signOut().then(() => {
+      localStorage.clear();
+    });
+
+    // this.router.navigate(['/sign-in']);
+  }
 }

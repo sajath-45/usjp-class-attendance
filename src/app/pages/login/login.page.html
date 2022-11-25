@@ -4,11 +4,11 @@
   <ion-list>
     <form [formGroup]="loginForm" style="margin-top: 50px">
       <ion-item lines="none">
-        <ion-segment value="default">
-          <ion-segment-button value="default">
-            <ion-label>Lecture</ion-label>
+        <ion-segment formControlName="type">
+          <ion-segment-button value="lecturer">
+            <ion-label>Lecturer</ion-label>
           </ion-segment-button>
-          <ion-segment-button value="segment">
+          <ion-segment-button value="students">
             <ion-label>Student</ion-label>
           </ion-segment-button>
         </ion-segment>
@@ -16,7 +16,7 @@
 
       <ion-item lines="none">
         <div class="ion-label">
-          <div class="name">{{ "Login email" }}</div>
+          <div class="name">{{ "Email" }}</div>
           <div class="">
             <ion-input
               type="email"
@@ -28,7 +28,7 @@
       </ion-item>
       <ion-item lines="none">
         <div class="ion-label">
-          <div class="name">{{ "Login password" }}</div>
+          <div class="name">{{ "Password" }}</div>
           <div class="">
             <ion-input
               type="password"
@@ -47,12 +47,16 @@
         <ion-button *ngIf="showSpinnerButton">
           <ion-spinner></ion-spinner>
         </ion-button>
-
-        <!-- <div class="remember">
-        <img (click)="change()" class="check" [src]="check" />{{
-        "remember me" }}
-      </div> -->
       </div>
     </form>
+
+    <div class="ion-text-center" style="font-size: 14px">
+      <div class="message">
+        {{ "Don't have an account" }} ?
+        <span class="createNew" [routerLink]="['/register']"
+          >{{ "Create new account" }}</span
+        >
+      </div>
+    </div>
   </ion-list>
 </ion-content>
