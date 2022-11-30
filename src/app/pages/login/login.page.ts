@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { take } from 'rxjs/operators';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { DatabaseService } from 'src/app/services/database.service';
@@ -53,13 +54,17 @@ export class LoginPage implements OnInit {
         console.log(res);
         if (res.user) {
           localStorage.setItem('uid', res.user.uid);
+          localStorage.setItem('loginType', this.loginForm.value.type);
+
           let userSub = this.dbService
             .getOne(`${this.loginForm.value.type}/${res.user.uid}`)
+            .pipe(take(1))
             .subscribe(
               (user: User) => {
                 console.log(user);
                 if (user) {
                   this.userService.user = user;
+                  this.userService.myCourses = user.courses;
                   this.notificationService.initPush();
 
                   this.router.navigate(['tabs/home']);

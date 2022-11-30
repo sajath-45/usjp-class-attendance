@@ -98,5 +98,14 @@
         >
       </ion-col>
     </ion-row>
+
+    <div class="ion-text-center" style="font-size: 14px">
+      <div class="message">
+        {{ "Already have an account?" }} ?
+        <ion-text color="danger" [routerLink]="['/login']"
+          >{{ "Login" }}</ion-text
+        >
+      </div>
+    </div>
   </form>
 </ion-content>

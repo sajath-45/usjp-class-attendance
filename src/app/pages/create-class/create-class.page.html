@@ -57,21 +57,18 @@
         type="text"
       ></ion-input>
     </ion-item> -->
-    <ion-item>
-      <ion-label position="stacked">Date *</ion-label>
-      <ion-input formControlName="date" type="date"></ion-input>
-    </ion-item>
+
     <ion-item button detail="false" id="timeID">
-      <ion-label>Start Time *</ion-label>
+      <ion-label>Date & Time *</ion-label>
       <ion-datetime-button mode="ios" datetime="time"></ion-datetime-button>
 
       <ion-modal [keepContentsMounted]="true" trigger="timeID">
         <ng-template>
           <ion-datetime
             mode="ios"
-            formControlName="time"
+            formControlName="dateTime"
             [showDefaultButtons]="true"
-            presentation="time"
+            presentation="date-time"
             id="time"
           ></ion-datetime>
         </ng-template>

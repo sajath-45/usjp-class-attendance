@@ -54,16 +54,18 @@
         >{{event.course.name}}</ion-label
       >
       <br />
-      <ion-label color="dark">{{convertIsoDate(event.dateFrom) }} </ion-label>
+      <ion-label color="dark">{{convertIsoDate(event.dateTime) }} </ion-label>
       <br />
-      <ion-label color="medium"> {{event.time | date:'shortTime'}} </ion-label>
+      <ion-label color="medium">
+        {{event.dateTime | date:'shortTime'}}
+      </ion-label>
     </ion-card-header>
     <ion-card-content class="ec-footer">
       <ion-label *ngIf="!classService.isEventOver(event)" color="dark"
-        >{{event.participants.length}} Confirmed
+        >{{event.participants?.length}} Confirmed
       </ion-label>
       <ion-label *ngIf="classService.isEventOver(event)" color="dark"
-        >{{event.participants.length}} Participated
+        >{{event.participants?.length}} Participated
       </ion-label>
       <ion-label>
         <ion-icon
@@ -92,16 +94,18 @@
         >{{event.course.name}}</ion-label
       >
       <br />
-      <ion-label color="dark">{{convertIsoDate(event.dateFrom) }} </ion-label>
+      <ion-label color="dark">{{convertIsoDate(event.dateTime) }} </ion-label>
       <br />
-      <ion-label color="medium"> {{event.time | date:'shortTime'}} </ion-label>
+      <ion-label color="medium">
+        {{event.dateTime | date:'shortTime'}}
+      </ion-label>
     </ion-card-header>
     <ion-card-content class="ec-footer">
       <ion-label *ngIf="!classService.isEventOver(event)" color="dark"
-        >{{event.participants.length}} Confirmed
+        >{{event.participants?.length}} Confirmed
       </ion-label>
       <ion-label *ngIf="classService.isEventOver(event)" color="dark"
-        >{{event.participants.length}} Participated
+        >{{event.participants?.length}} Participated
       </ion-label>
       <ion-label>
         <ion-icon

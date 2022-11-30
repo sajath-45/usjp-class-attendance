@@ -7,7 +7,7 @@ import { User } from '../models/user';
 })
 export class UserService {
   public user: User;
-  public myCourses = ['BiDMO3ezPnffhQZVLT48', 'PM0oXuWG6VmAxRjLpPXu'];
+  public myCourses = [];
 
   constructor(private alertCtrl: AlertController) {}
 

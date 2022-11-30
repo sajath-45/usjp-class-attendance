@@ -8,7 +8,7 @@ export class ClassService {
   constructor() {}
   isEventOver(event) {
     let today = moment(new Date());
-    let startDate = moment(event.time);
+    let startDate = moment(event.dateTime);
     return today.isAfter(startDate);
   }
 }

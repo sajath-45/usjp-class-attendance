@@ -13,6 +13,7 @@ import {
   onSnapshot,
   orderBy,
   limit,
+  getCountFromServer,
 } from '@firebase/firestore';
 import { Firestore, collectionData, docData } from '@angular/fire/firestore';
 import {
@@ -28,6 +29,7 @@ import {
 import { combineLatest, Observable } from 'rxjs';
 import { setDoc } from 'firebase/firestore';
 import { UserService } from './user.service';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root',
@@ -67,6 +69,10 @@ export class DatabaseService {
     return addDoc(reference, detail);
   }
 
+  set(path: string, id, data) {
+    return setDoc(doc(this.firestore, path, id), data);
+  }
+
   update(path: string, detail) {
     //path= `trips/${ride.rideId}`
     // console.log(path,detail )
@@ -86,11 +92,36 @@ export class DatabaseService {
     const classes = query(
       classRef,
       where('course.courseId', 'in', this.userService.myCourses),
-      orderBy('date', 'asc')
+      orderBy('dateTimeUtc', 'asc')
     );
     const querySnapshot = await getDocs(classes);
 
     return querySnapshot;
+  }
+
+  async getCountCompleted() {
+    let today = new Date().getTime();
+    console.log(today);
+    const coll = collection(this.firestore, 'classes');
+    const query_ = query(
+      coll,
+      where('course.courseId', 'in', this.userService.myCourses),
+      where('dateTimeUtc', '<', today)
+    );
+    const snapshot = await getCountFromServer(query_);
+    return snapshot.data().count;
+  }
+  async getCountPending() {
+    let today = new Date().getTime();
+
+    const coll = collection(this.firestore, 'classes');
+    const query_ = query(
+      coll,
+      where('course.courseId', 'in', this.userService.myCourses),
+      where('dateTimeUtc', '>', today)
+    );
+    const snapshot = await getCountFromServer(query_);
+    return snapshot.data().count;
   }
 
   ///where wuery

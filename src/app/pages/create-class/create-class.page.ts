@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { Timestamp } from 'firebase/firestore';
 import * as moment from 'moment';
 import { ClassService } from 'src/app/services/class.service';
 import { DatabaseService } from 'src/app/services/database.service';
@@ -49,13 +50,13 @@ export class CreateClassPage implements OnInit {
     this.classForm = this.formBuilder.group({
       course: ['', Validators.required],
       secretCode: [this.makeid(10), Validators.required],
-      time: [moment().format()],
-      date: [moment().format(), Validators.required],
+      dateTime: [moment().format(), Validators.required],
       description: [''],
       lecturerId: [1, Validators.required],
       qrImage: [''],
-      participants: [],
-      participantListIds: [],
+      participants: [[]],
+      participantListIds: [[]],
+      dateTimeUtc: [''],
     });
   }
 
@@ -107,10 +108,12 @@ export class CreateClassPage implements OnInit {
   }
 
   submit() {
-    console.log('form', this.classForm);
-
     if (this.classForm.valid) {
       this.util.presentLoading('Creating ..');
+      this.classForm
+        .get('dateTimeUtc')
+        .setValue(new Date(this.classForm.value.dateTime).getTime());
+      console.log('form', this.classForm.value);
 
       const base64Img =
         document.getElementsByClassName('coolQRCode')[0].children[0]['src'];

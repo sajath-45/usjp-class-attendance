@@ -32,12 +32,12 @@
         <ion-label>Dr maseq</ion-label>
       </ion-item>
       <ion-item>
-        <ion-badge slot="end">{{classDetail.date}}</ion-badge>
+        <ion-badge slot="end">{{classDetail.dateTime | date}}</ion-badge>
         <ion-label>Start Date</ion-label>
       </ion-item>
       <ion-item>
         <ion-badge slot="end"
-          >{{classDetail.time | date:'shortTime'}}</ion-badge
+          >{{classDetail.dateTime | date:'shortTime'}}</ion-badge
         >
         <ion-label>Start Time</ion-label>
       </ion-item>

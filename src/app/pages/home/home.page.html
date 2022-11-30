@@ -7,7 +7,7 @@
       />
     </ion-avatar>
     <ion-label
-      ><h1>Welcome Back Sajath!</h1>
+      ><h1>Welcome Back {{userService?.user?.firstName}}!</h1>
       <p>MATH/PHY/ICT</p>
     </ion-label>
   </ion-item>
@@ -20,7 +20,7 @@
         <ion-card-content class="ion-text-center"
           ><ion-label class="status-label"><b>Up Coming</b></ion-label>
           <br />
-          <ion-label>10</ion-label></ion-card-content
+          <ion-label>{{onGoingCount}}</ion-label></ion-card-content
         >
       </ion-card>
     </ion-col>
@@ -29,13 +29,15 @@
         <ion-card-content class="ion-text-center">
           <ion-label class="status-label"><b>Completed</b></ion-label>
           <br />
-          <ion-label>20</ion-label>
+          <ion-label>{{completedCount}}</ion-label>
         </ion-card-content>
       </ion-card>
     </ion-col>
   </ion-row>
   <div class="ion-text-center ion-padding-horizontal">
-    <ion-button expand="block">View All</ion-button>
+    <ion-button [routerLink]="['/tabs/classes']" expand="block"
+      >View All</ion-button
+    >
   </div>
 
   <ion-list>

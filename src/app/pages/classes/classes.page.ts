@@ -4,6 +4,7 @@ import { ModalController } from '@ionic/angular';
 import * as moment from 'moment';
 import { ClassService } from 'src/app/services/class.service';
 import { DatabaseService } from 'src/app/services/database.service';
+import { UserService } from 'src/app/services/user.service';
 import { UtilService } from 'src/app/services/util.service';
 import { ClassDetailPage } from '../class-detail/class-detail.page';
 import { CreateClassPage } from '../create-class/create-class.page';
@@ -18,23 +19,15 @@ export class ClassesPage implements OnInit {
   completedClasses = [];
   onGoingClasses = [];
 
-  eventList: any[] = [
-    {
-      className: 'ICT 301 Mobile Technology',
-      time: '8.00 am',
-      participants: [],
-      dateFrom: new Date(),
-      venue: 'LCS',
-    },
-  ];
-  type = 'on-going';
+  type: 'on-going' | 'completed' = 'on-going';
 
   constructor(
     public classService: ClassService,
     public modalCtrl: ModalController,
     private dbService: DatabaseService,
     public util: UtilService,
-    private router: Router
+    private router: Router,
+    public userService: UserService
   ) {}
 
   ngOnInit() {
@@ -44,6 +37,7 @@ export class ClassesPage implements OnInit {
   getClasses() {
     this.completedClasses = [];
     this.onGoingClasses = [];
+    console.log(this.userService.user);
     this.util.presentLoading('loading..');
     this.dbService.getMyClasses().then(
       (res) => {

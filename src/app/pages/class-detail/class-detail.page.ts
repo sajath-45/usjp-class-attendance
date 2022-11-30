@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
+import { Capacitor } from '@capacitor/core';
 import { ActionSheetController, ModalController } from '@ionic/angular';
 import { DatabaseService } from 'src/app/services/database.service';
 import { UtilService } from 'src/app/services/util.service';
@@ -94,6 +95,6 @@ export class ClassDetailPage implements OnInit {
   }
 
   ngOnDestroy() {
-    this.stop();
+    if (Capacitor.getPlatform() !== 'web') this.stop();
   }
 }

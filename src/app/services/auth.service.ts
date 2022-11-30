@@ -7,6 +7,7 @@ import {
   onAuthStateChanged,
   signInWithPopup,
 } from '@angular/fire/auth';
+import { User } from '../models/user';
 import { DatabaseService } from './database.service';
 
 @Injectable({
@@ -32,12 +33,12 @@ export class AuthService {
         password
       );
       if (user) {
-        const newUser = {
+        const newUser: User = {
           uid: user.user.uid,
           ...detail,
         };
 
-        return this.dbService.create('students', newUser, newUser.uid);
+        return this.dbService.set(newUser.type, newUser.uid, newUser);
       } else {
         return null;
       }

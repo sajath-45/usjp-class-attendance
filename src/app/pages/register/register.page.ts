@@ -7,6 +7,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subject, interval } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Course } from 'src/app/models/class';
@@ -53,7 +54,8 @@ export class RegisterPage implements OnInit {
     private formBuilder: FormBuilder,
     public dbService: DatabaseService,
     private authService: AuthService,
-    private util: UtilService
+    private util: UtilService,
+    public router: Router
   ) {
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
@@ -119,7 +121,6 @@ export class RegisterPage implements OnInit {
       let user = this.registerForm.value;
       delete user.password;
       console.log(user);
-      debugger;
 
       try {
         this.authService
@@ -134,6 +135,7 @@ export class RegisterPage implements OnInit {
             (res) => {
               console.log(res);
               this.util.showToast('Account Created', 'success', 'bottom');
+              this.router.navigate(['/login']);
             },
             (err) => {
               console.log(err);
