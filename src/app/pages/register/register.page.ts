@@ -73,6 +73,7 @@ export class RegisterPage implements OnInit {
       id: ['', Validators.required],
       password: ['', Validators.required],
       courses: [],
+      profPic: [''],
     });
 
     this.registerForm

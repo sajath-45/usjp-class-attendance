@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="245" height="240" viewBox="0 0 245 240">
+  <g id="projects" clip-path="url(#clip-projects)">
+    <g id="Group_11" data-name="Group 11" transform="translate(-16 -717)">
+      <path id="Path_6" data-name="Path 6" d="M435.122,120.508H322.839a7.557,7.557,0,1,1,0-15.114H435.122a7.557,7.557,0,0,1,0,15.114Z" transform="translate(-190.993 660.539)"/>
+      <path id="Path_7" data-name="Path 7" d="M405.563,195.817H322.839a7.557,7.557,0,1,1,0-15.113h82.725a7.557,7.557,0,1,1,0,15.113Z" transform="translate(-190.993 615.715)"/>
+      <path id="Path_8" data-name="Path 8" d="M88.668,321.39H156.31v63.286H88.668Z" transform="translate(-56.112 531.978)"/>
+      <path id="Path_9" data-name="Path 9" d="M145.2,381.12H77.559A7.556,7.556,0,0,1,70,373.563V310.281a7.556,7.556,0,0,1,7.557-7.557H145.2a7.557,7.557,0,0,1,7.557,7.557v63.282A7.555,7.555,0,0,1,145.2,381.12ZM85.112,366.008h52.527V317.837H85.112Z" transform="translate(-45.002 543.088)"/>
+      <path id="Path_10" data-name="Path 10" d="M435.122,357.187H322.839a7.557,7.557,0,1,1,0-15.113H435.122a7.557,7.557,0,0,1,0,15.113Z" transform="translate(-190.993 519.666)"/>
+      <path id="Path_11" data-name="Path 11" d="M405.563,432.488H322.839a7.557,7.557,0,1,1,0-15.114h82.725a7.557,7.557,0,1,1,0,15.114Z" transform="translate(-190.993 474.848)"/>
+      <path id="Path_12" data-name="Path 12" d="M88.668,84.711H156.31V148H88.668Z" transform="translate(-56.112 672.849)"/>
+      <path id="Path_13" data-name="Path 13" d="M145.2,144.434H77.559A7.556,7.556,0,0,1,70,136.877V73.591a7.556,7.556,0,0,1,7.557-7.557H145.2a7.557,7.557,0,0,1,7.557,7.557v63.286a7.557,7.557,0,0,1-7.557,7.555ZM85.112,129.322h52.527V81.147H85.112Z" transform="translate(-45.002 683.966)"/>
+    </g>
+  </g>
+</svg>

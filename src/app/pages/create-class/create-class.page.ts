@@ -52,11 +52,12 @@ export class CreateClassPage implements OnInit {
       secretCode: [this.makeid(10), Validators.required],
       dateTime: [moment().format(), Validators.required],
       description: [''],
-      lecturerId: [1, Validators.required],
+      lecturerId: [this.uid, Validators.required],
       qrImage: [''],
       participants: [[]],
       participantListIds: [[]],
       dateTimeUtc: [''],
+      isReminder: [false],
     });
   }
 

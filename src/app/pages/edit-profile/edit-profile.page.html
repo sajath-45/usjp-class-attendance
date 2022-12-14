@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar mode="md">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home" text="" mode="md">
+        <img src="../../assets/images/back.svg" />
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title slot="start"> {{'Edit Profile' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="editForm">
+    <div class="profile-pic-area">
+      <div
+        class="profile-pic"
+        style="background-image: url('{{userService?.user?.profilePic}}'),url('../../assets/images/profile.png') ;"
+      ></div>
+      <div (click)="uplaodoptions()" class="profile-edit">
+        <ion-icon src="../../assets/icon/edit.svg"></ion-icon>
+      </div>
+    </div>
+    <!-- User:any={fullname:'', gender:'',phone:'',email:'',address:{locationname:'',lat:'',lng:''}}; -->
+    <ion-list>
+      <ion-item lines="none">
+        <div class="ion-label">
+          <div class="name">{{'Full Name' }}</div>
+          <ion-input
+            type="text"
+            formControlName="firstName"
+            required
+            placeholder="{{ 'Enter Your First Name' }}"
+          ></ion-input>
+        </div>
+      </ion-item>
+      <ion-item lines="none">
+        <div class="ion-label">
+          <div class="name">{{'Last Name' }}</div>
+          <ion-input
+            type="text"
+            required
+            formControlName="lastName"
+            placeholder="{{ 'Enter Your Last Name' }}"
+          ></ion-input>
+        </div>
+      </ion-item>
+      <ion-item lines="none">
+        <div class="ion-label">
+          <div class="name">{{'Email' }}</div>
+          <ion-input
+            type="email"
+            formControlName="email"
+            readonly
+            placeholder="{{ 'Enter Your Email' }}"
+          ></ion-input>
+        </div>
+      </ion-item>
+    </ion-list>
+
+    <div class="btn-area">
+      <ion-button
+        class="cm-button-border"
+        size="small"
+        [routerLink]="['/tabs/home']"
+        >{{'Cancel' }}</ion-button
+      >
+      <ion-button class="" size="small" (click)="updateUserProfile()"
+        >{{'Update' }}</ion-button
+      >
+    </div>
+  </form>
+</ion-content>

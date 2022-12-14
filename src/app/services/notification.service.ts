@@ -112,8 +112,14 @@ export class NotificationService {
 
   public saveTokenToDb(token) {
     if (!token) return;
+    let type;
+    if (this.userService.user.type == 'lecturer') {
+      type = 'lecturer';
+    } else {
+      type = 'students';
+    }
     this.db
-      .update(`users/${localStorage.getItem('uid')}`, {
+      .update(`${type}/${localStorage.getItem('uid')}`, {
         fcmToken: token,
       })
       .then((res) => {

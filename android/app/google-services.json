@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "195678760527",
+    "project_id": "usjp-class-attendance",
+    "storage_bucket": "usjp-class-attendance.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:195678760527:android:70262057868f32054a043a",
+        "android_client_info": {
+          "package_name": "usjp.classattendance.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "195678760527-h4nv5abm7esca82jql63vojncmpo9hgt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2kFfn73gl7BHBueC1eJNvNzUbtzKjg0g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "195678760527-h4nv5abm7esca82jql63vojncmpo9hgt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

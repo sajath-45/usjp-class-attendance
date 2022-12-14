@@ -4,6 +4,7 @@ import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 import { Capacitor } from '@capacitor/core';
 import { ActionSheetController, ModalController } from '@ionic/angular';
 import { DatabaseService } from 'src/app/services/database.service';
+import { UserService } from 'src/app/services/user.service';
 import { UtilService } from 'src/app/services/util.service';
 import { QrScannerPage } from '../qr-scanner/qr-scanner.page';
 
@@ -15,7 +16,8 @@ import { QrScannerPage } from '../qr-scanner/qr-scanner.page';
 export class ClassDetailPage implements OnInit {
   classDetail: any;
   contentVisibility = '';
-  uid = '123';
+  uid = localStorage.getItem('uid');
+  lecturerDetail;
 
   constructor(
     public actionSheetController: ActionSheetController,
@@ -23,7 +25,8 @@ export class ClassDetailPage implements OnInit {
     private activatedRoute: ActivatedRoute,
     public modalCtrl: ModalController,
     private router: Router,
-    private util: UtilService
+    private util: UtilService,
+    public userService: UserService
   ) {}
 
   ngOnInit() {
@@ -33,8 +36,24 @@ export class ClassDetailPage implements OnInit {
       if (navParams) {
         this.classDetail = navParams;
         console.log(this.classDetail);
+
+        if (this.classDetail?.lecturerId) {
+          this.getLectureProfile();
+        }
       }
     });
+  }
+
+  getLectureProfile() {
+    this.dbService.getOne(`lecturer/${this.classDetail?.lecturerId}`).subscribe(
+      (res) => {
+        this.lecturerDetail = res;
+        console.log('lecturer details-->', res);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   async scanQr() {
@@ -88,7 +107,10 @@ export class ClassDetailPage implements OnInit {
   pushParticipant() {
     if (!this.classDetail.participantListIds.includes(this.uid)) {
       this.classDetail.participantListIds.push(this.uid);
-      this.classDetail.participants.push({ uid: this.uid, name: 'ABC' });
+      this.classDetail.participants.push({
+        uid: this.uid,
+        name: this.userService.user.firstName,
+      });
     } else {
       this.util.showToast('Already in class', 'danger', 'bottom');
     }

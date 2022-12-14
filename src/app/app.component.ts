@@ -4,6 +4,7 @@ import { Platform } from '@ionic/angular';
 import { take } from 'rxjs/operators';
 import { User } from './models/user';
 import { AuthService } from './services/auth.service';
+import { ClassService } from './services/class.service';
 import { DatabaseService } from './services/database.service';
 import { NotificationService } from './services/notification.service';
 import { UserService } from './services/user.service';
@@ -20,7 +21,8 @@ export class AppComponent {
     private dbService: DatabaseService,
     public userService: UserService,
     private notificationService: NotificationService,
-    private auth: AuthService
+    private auth: AuthService,
+    public classService: ClassService
   ) {
     this.initializeApp();
   }
@@ -42,6 +44,7 @@ export class AppComponent {
               this.notificationService.initPush();
               console.log(user);
               userSub.unsubscribe();
+              this.classService.getClasses();
             },
             (err) => {
               userSub.unsubscribe();

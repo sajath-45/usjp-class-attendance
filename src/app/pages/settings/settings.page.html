@@ -9,5 +9,8 @@
     <ion-item button (click)="logout()">
       <ion-label>Log out</ion-label>
     </ion-item>
+    <ion-item button [routerLink]="['/tabs/edit-profile']">
+      <ion-label>Settings</ion-label>
+    </ion-item>
   </ion-list>
 </ion-content>

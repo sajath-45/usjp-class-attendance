@@ -7,6 +7,7 @@ import {
   onAuthStateChanged,
   signInWithPopup,
 } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 import { User } from '../models/user';
 import { DatabaseService } from './database.service';
 
@@ -14,7 +15,11 @@ import { DatabaseService } from './database.service';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private auth: Auth, public dbService: DatabaseService) {}
+  constructor(
+    private auth: Auth,
+    public dbService: DatabaseService,
+    public router: Router
+  ) {}
 
   async loginFirebase({ email, password }) {
     try {
@@ -51,6 +56,7 @@ export class AuthService {
     console.log('sign out called');
     return this.auth.signOut().then(() => {
       localStorage.clear();
+      this.router.navigate(['/login']);
     });
 
     // this.router.navigate(['/sign-in']);

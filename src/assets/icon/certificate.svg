@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="245" height="240" viewBox="0 0 245 240">
+  <defs>
+    <clipPath id="clip-certificate">
+      <rect width="245" height="240"/>
+    </clipPath>
+  </defs>
+  <g id="certificate" clip-path="url(#clip-certificate)">
+    <g id="certificate-black-paper-symbol_icon-icons.com_54575" transform="translate(9.032 -15.384)">
+      <g id="Group_79" data-name="Group 79" transform="translate(0 42.075)">
+        <circle id="Ellipse_7" data-name="Ellipse 7" cx="23.803" cy="23.803" r="23.803" transform="translate(38.086 85.693)"/>
+        <path id="Path_93" data-name="Path 93" d="M95.625,323.213v46.655l14.282-14.282,14.282,14.282V323.213a37.136,37.136,0,0,1-28.564,0Z" transform="translate(-48.018 -183.249)"/>
+        <path id="Path_94" data-name="Path 94" d="M209.47,42.075H19.043A19.1,19.1,0,0,0,0,61.118V184.9a19.1,19.1,0,0,0,19.043,19.043H38.086V174.422a33.25,33.25,0,0,1-9.521-22.851,33.736,33.736,0,0,1,33.325-33.325,33.736,33.736,0,0,1,33.325,33.325,31.536,31.536,0,0,1-9.521,22.851v29.516H209.47A19.1,19.1,0,0,0,228.513,184.9V61.118A19.1,19.1,0,0,0,209.47,42.075Zm-9.521,114.257H142.821V146.81h57.128Zm0-28.564H114.257v-9.521h85.692Zm0-28.564H28.564V89.682H199.949Z" transform="translate(0 -42.075)"/>
+      </g>
+    </g>
+  </g>
+</svg>

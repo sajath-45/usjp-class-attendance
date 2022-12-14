@@ -7,4 +7,5 @@ export class User {
   type: string;
   id: string;
   courses: string[];
+  profilePic?: string;
 }

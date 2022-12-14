@@ -30,40 +30,7 @@ export class ClassesPage implements OnInit {
     public userService: UserService
   ) {}
 
-  ngOnInit() {
-    this.getClasses();
-  }
-
-  getClasses() {
-    this.completedClasses = [];
-    this.onGoingClasses = [];
-    console.log(this.userService.user);
-    this.util.presentLoading('loading..');
-    this.dbService.getMyClasses().then(
-      (res) => {
-        console.log(res);
-        this.util.dismissLoading();
-
-        res.forEach((x) => {
-          let item = x.data();
-          item.classId = x.id;
-
-          if (this.classService.isEventOver(item)) {
-            this.completedClasses.push(item);
-          } else {
-            this.onGoingClasses.push(item);
-          }
-        });
-
-        console.log('class as comple', this.completedClasses);
-        console.log('class as ongoing', this.onGoingClasses);
-      },
-      (err) => {
-        this.util.dismissLoading();
-        console.log(err);
-      }
-    );
-  }
+  ngOnInit() {}
 
   convertIsoDateTime(date) {
     return moment(date).format(' h:mm a');
@@ -98,4 +65,48 @@ export class ClassesPage implements OnInit {
   }
 
   segmentChanged() {}
+
+  setReminder(event) {
+    // //debugger;
+    // if (event.isReminder) {
+    // 	event.isReminder = !event.isReminder;
+    // 	this.no.offNotification(event.notifId);
+    // } else {
+    // 	event.isReminder = !event.isReminder;
+    // 	let body =
+    // 		event.eventTitle +
+    // 		'\n' +
+    // 		this.convertIsoDate(event.dateFrom) +
+    // 		' - ' +
+    // 		this.convertIsoDate(event.dateTo) +
+    // 		'\n' +
+    // 		event.location;
+    // 	this.localNotificationService
+    // 		.createNotification(
+    // 			'Event Notification',
+    // 			body,
+    // 			event.id,
+    // 			event.dateFrom,
+    // 			this.eventService.isEventFullDay(event),
+    // 			event
+    // 		)
+    // 		.subscribe((result) => {
+    // 			event.notifId = result.notifications[0].id;
+    // 			let request = {
+    // 				reqType: 6,
+    // 				reqId: result.notifications[0].id,
+    // 				title: 'Event Notification',
+    // 				subTitle: event.eventTitle,
+    // 				date: new Date(),
+    // 				event: event,
+    // 				notificationAt: event.dateFrom,
+    // 			};
+    // 			this.adminService
+    // 				.addLocalNotificationRequest(event.id.toString(), request)
+    // 				.subscribe((req) => {
+    // 					this.updateGroup(event);
+    // 				});
+    // 		});
+    // }
+  }
 }

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
+import { ClassService } from 'src/app/services/class.service';
 import { DatabaseService } from 'src/app/services/database.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { UserService } from 'src/app/services/user.service';
@@ -26,7 +27,8 @@ export class LoginPage implements OnInit {
     public userService: UserService,
     private dbService: DatabaseService,
     private util: UtilService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    public classService: ClassService
   ) {}
 
   ngOnInit() {
@@ -66,7 +68,7 @@ export class LoginPage implements OnInit {
                   this.userService.user = user;
                   this.userService.myCourses = user.courses;
                   this.notificationService.initPush();
-
+                  this.classService.getClasses();
                   this.router.navigate(['tabs/home']);
                 } else {
                   this.util.showToast(
